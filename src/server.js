@@ -6,3 +6,5 @@ App.listen(3000,async()=>{
     await connect();
     console.log('DB connected.');
 });  
+
+//const { connect, disconnect } = require('./db'); you can doo this if you are exporting using {curley brace}
