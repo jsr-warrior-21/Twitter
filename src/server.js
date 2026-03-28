@@ -44,5 +44,16 @@ App.listen(3000,async()=>{
         const tweetRepoPrticular = await tweetrepo.get('69c81972b966ceeb7bdfa466');
         const tweetRepoPrticularAndUpdate = await tweetrepo.update('69c81972b966ceeb7bdfa466',{content:"I am Updating"});
         console.log(tweetRepoPrticularAndUpdate);
+
+
+        // again i have create a new element into the schema array of object 
+        // here .create return array of object (because of schema i have created.) so 
+        // in this array we can easly push a new object means comment.
+
+        const tweet = await tweetrepo.create({content:'My Tweet.'});
+        tweet.comment.push({content:'First Comment.'});
+        await tweet.save();
+        console.log(tweet);
+
 });  
 //const { connect, disconnect } = require('./db'); you can doo this if you are exporting using {curley brace}
