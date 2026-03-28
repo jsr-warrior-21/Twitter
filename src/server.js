@@ -11,15 +11,27 @@ App.listen(3000,async()=>{
     await connect();
     console.log('DB connected.');
 
-    // here the connect of models
+    // here the connect of models and creating documents
 
-    const tweet = await Tweet.create({
-        content:'First tweet',
-        userEmail:'a@b.com'
-    });
+    // const tweet = await Tweet.create({
+    //     content:'First tweet',
+    //     userEmail:'a@b.com'
+    // });
 
-    console.log(tweet);
+    // now till two or three documents are already created
+    // lets comment upper part so no new one again create.
 
+
+
+    // -----> we can apply queries on the data base also
+    
+    const tweets = await Tweet.find(); // will return array of all documents
+    const tweetId = await Tweet.find({userEmail:'a@b.com'});
+    const tweetParticular = await Tweet.findById('69c81972b966ceeb7bdfa466');  // will give the particular tweets 
+    tweetParticular.userEmail="arvind@21gmail.com"; 
+    await tweetParticular.save(); // like this you can update the document also
+    console.log(tweetParticular); // this will give updatedAt props - means when the document got updated
+ 
 });  
 
 //const { connect, disconnect } = require('./db'); you can doo this if you are exporting using {curley brace}
