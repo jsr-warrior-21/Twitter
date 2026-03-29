@@ -43,7 +43,7 @@ App.listen(3000,async()=>{
         const tweetrepo = new TweetRepository();
         const tweetRepoPrticular = await tweetrepo.get('69c81972b966ceeb7bdfa466');
         const tweetRepoPrticularAndUpdate = await tweetrepo.update('69c81972b966ceeb7bdfa466',{content:"I am Updating"});
-        console.log(tweetRepoPrticularAndUpdate);
+        // console.log(tweetRepoPrticularAndUpdate);
 
 
         // again i have create a new element into the schema array of object 
@@ -53,7 +53,13 @@ App.listen(3000,async()=>{
         const tweet = await tweetrepo.create({content:'My Tweet.'});
         tweet.comment.push({content:'First Comment.'});
         await tweet.save();
-        console.log(tweet);
+        // console.log(tweet);
+
+
+
+        const FixedTweet = await tweetrepo.getAll(2,4); //(offset,limit);
+        console.log(FixedTweet); // Here you will get the first four record
+
 
 });  
 //const { connect, disconnect } = require('./db'); you can doo this if you are exporting using {curley brace}

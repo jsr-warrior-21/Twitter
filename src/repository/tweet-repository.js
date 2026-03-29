@@ -38,6 +38,20 @@ class TweetRepository {
       console.log(error);
     }
   }
+ 
+  async getAll(offset,limit){
+    try {
+      const tweet = await Tweet.find().skip(offset).limit(limit); //now you will got some number of document from your data base not all
+      // data -> equal to limit number
+      // offset -> if you want to skip some starting document. 
+      return tweet;
+    } catch (error) {
+       console.log(error); 
+    }
+  }
+
+
+
 };
 
 module.exports = TweetRepository;
